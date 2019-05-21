@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>{% block heading %} {% endblock %}</h1>
+      <nav class="navbar mb-3">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('authors') }}">About Authors</a>
+      </nav>
+
+      {% block body %}
+      {% endblock %}
+    </div>
+  </body>
+</html>

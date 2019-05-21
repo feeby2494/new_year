@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    About the Authors
+{% endblock %}
+
+{% block body %}
+  <div class="row" id="root">
+
+  </div>
+  <script type="text/babel">
+    const pageData = {
+      names: {{ names|tojson }}
+    }
+
+    function ListOfNames(props) {
+      const namelist = []
+      for (const [index, value] of props.names.entries()) {
+        namelist.push(<li className="list-group-item" key={index}> {value} </li>)
+      }
+      return (
+        <div>
+          <ul className="col list-group">{namelist}</ul>
+        </div>
+      )
+    }
+
+    function MainPage(props) {
+      return (
+        <div>
+          <ListOfNames names = {pageData.names} />
+        </div>
+      )
+    }
+
+
+      ReactDOM.render(
+        <MainPage/>,
+        document.getElementById("root")
+      )
+
+  </script>
+
+  <form action="{{ url_for('authors') }}" method="post">
+    <input type="text" name="name" value="Enter your name">
+    <button>Submit</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Home Page
+{% endblock %}
+
+{% block body %}
+  <div class="row" id="root"></div>
+  <script type="text/babel">
+  //   function ShoppingTitle(props){
+  //     return (
+  //         <div>
+  //             <h1>{props.title}</h1>
+  //             <h2>Total Number of Items: {props.numItems}</h2>
+  //         </div>
+  //
+  //     )
+  // }
+  // function ListItem(props){
+  //     return <li>{props.item}</li>
+  // }
+  //
+  // function ShoppingList(props){
+  //     return (
+  //         <div>
+  //             <h3>{props.header}</h3>
+  //             <ol>
+  //                 <ListItem item = {props.items[0]}/>
+  //                 <ListItem item = {props.items[1]}/>
+  //                 <ListItem item = {props.items[2]}/>
+  //             </ol>
+  //         </div>
+  //     )
+  // }
+  //
+  //
+  // function ShoppingApp(props){
+  //
+  //     <div>
+  //       <h1>{props.title}</h1>
+  //     </div>
+  //     return (
+  //         <div>
+  //             <ShoppingTitle title = "My Shopping List" numItems = "9"/>
+  //             <ShoppingList header = "Food" items = {[ "Apple","Bread","Cheese"]}/>
+  //             <ShoppingList header = "Clothes" items = {[ "Shirt","Pants","Hat"]}/>
+  //             <ShoppingList header = "Supplies" items = {[ "Pen","Paper","Glue"]}/>
+  //         </div>
+  //     )
+  // }
+  //
+  // ReactDOM.render(
+  //     <ShoppingApp/>,
+  //     document.getElementById("root")
+  // )
+
+    const pageData = {
+      pageTitle: "{{ pageTitle }}",
+      todayNewYears:
+        "{% if todayNewYears %} \
+            Yes! Happy New Year! \
+         {% else %} \
+            NO \
+         {% endif %}"
+    }
+
+
+    function Header(props) {
+      return (
+        <h1 className="h3">{ props.title } </h1>
+      )
+    }
+
+    function NewYear(props) {
+      return (
+        <div className="col-sm">
+          <ul className="list-group">
+            <li className="list-group-item">{ props.newYears }</li>
+          </ul>
+        </div>
+      )
+    }
+
+
+
+  function MainPage(props) {
+    return (
+      <div>
+        <Header title = { pageData.pageTitle } />
+        <NewYear newYears = { pageData.todayNewYears } />
+      </div>
+    )
+  }
+
+
+    ReactDOM.render(
+      <MainPage/>,
+      document.getElementById("root")
+    )
+  </script>
+  {% for name in names %}
+    <li>{{ name }}</li>
+  {% endfor %}
+
+  
+{% endblock %}
