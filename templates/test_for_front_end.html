@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+
+      {% for item in cardContent %}
+        {% if item.type == 'picture' %}
+          <img uri="{{ item.uri }}" alt="{{ item.alt }}"> </img>
+        {% elif item.type == 'video'%}
+          <iframe uri="{{ item.uri }}" title="{{ item.title }}"> </iframe>
+        {% else %}
+          <p text="{{ item.text }}"></p>
+        {% endif %}
+      {% endfor %}
+
+
+      </div>
+
+    </div>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+
+        // 
+        // const pageData = {
+        //   pageTitle: "{{ pageTitle }}",
+        //   cardContent: {{ cardContent|tojson  }}
+        // }
+        //
+        //
+        //
+        // function SimpleParagraph(props) {
+        //   return (
+        //     <p>{ props.text }</p>
+        //   )
+        // }
+        //
+        // function VideoIFrame(props) {
+        //     <div>
+        //       <h3>{ props.title }</h3>
+        //       <iframe src={ props.uri } ></iframe>
+        //     </div>
+        // }
+        //
+        // function Picture(props) {
+        //     <img src={ props.uri } alt={ props.alt }>
+        // }
+        //
+        //
+        //
+        // function Card(props){
+        //
+        //   return (
+        //     {% for item in cardContent %}
+        //       {% if item.type == 'picture' %}
+        //         <Picture uri="{{ item.uri }}" alt="{{ item.alt }}"/>
+        //       {% elif item.type == 'video'%}
+        //         <VideoIFrame uri="{{ item.uri }}" title="{{ item.title }}"/>
+        //       {% else %}
+        //         <SimpleParagraph text="{{ item.text }}"/>
+        //       {% endif %}
+        //     {% endfor %}
+        //   )
+        //   //for loop in react?
+        //   // for(let i = 0; i < props.cardContent.length; i++ ) {
+        //   //   if (props.cardContent[i].type == "text") {
+        //   //     return (<SimpleParagraph text={ props.cardContent[i].text }/>);
+        //   //   } else if (props.cardContent[i].type == "video") {
+        //   //     return (<VideoIFrame uri={ props.cardContent[i].uri } title={ props.cardContent[i].title }/>);
+        //   //   } else {
+        //   //     return (<Picture uri={ props.cardContent[i].uri } alt={ props.cardContent[i].alt }/>);
+        //   //   }
+        //   // }
+        // }
+        //
+        //
+        // ReactDOM.render(
+        //   <Card cardContent={ pageData.cardContent }/>,
+        //   document.getElementById('root')
+        // )
+        //
+
+
+        //   function Card(props){
+        //     function getCardContent() {
+        //     const objects = []
+        //     for (var i=0; i < objects.length; i++) {
+        //       if (props.cardContent[i].type == "text") {
+        //         objects.push(<SimpleParagraph object={objects[i]} key={i} text={ props.cardContent[i].text } />);
+        //       } else if (props.cardContent[i].type == "video") {
+        //         objects.push(<VideoIFrame object={objects[i]} key={i} uri={ props.cardContent[i].uri } title={ props.cardContent[i].title }/>);
+        //       } else {
+        //         objects.push(<Picture object={objects[i]} key={i} uri={ props.cardContent[i].uri } alt={ props.cardContent[i].alt }/>);
+        //       }
+        //
+        //     }
+        //     return objects;
+        //   }
+        //   return <div> { getCardContent() } </div>
+        // }
+
+    </script>
+  </body>
+</html>

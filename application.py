@@ -29,3 +29,13 @@ def authors():
         if name:
             session["names"].append(name)
         return render_template("authors.html", names=session["names"])
+
+@app.route("/test")
+def test():
+    pageTitle = "Does this work?"
+    cardContent = [
+        {'order': 0, 'type': "text", 'text':"hello there!"},
+        {'order': 1, 'type': "video", 'uri': "https://www.youtube.com/watch?v=kxRRuM99yg0"},
+        {'order': 2, 'type': "picture", 'alt': "Front of Dongguksa Temple", 'uri': "https://farm2.staticflickr.com/1939/43640256040_a699d0f07a_k.jpg"}
+        ]
+    return render_template("test_for_front_end.html",cardContent=cardContent, pageTitle=pageTitle )
